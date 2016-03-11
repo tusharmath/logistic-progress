@@ -1,0 +1,16 @@
+{
+  "name": "logistic-loader",
+  "version": "1.0.0",
+  "description": "a loader based on standard logistic function",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "Tushar Mathur <tusharmath@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "rx": "^4.1.0",
+    "rx-dom": "^7.0.3"
+  }
+}
