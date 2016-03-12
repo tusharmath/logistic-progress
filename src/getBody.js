@@ -2,6 +2,7 @@ const e = require('./Utils')
 /**
  * Dispatches a value between 0 - 100, never actually reaching 100.
  *
+ * @private
  * @param {Observable} source - The input source determining when to start/stop
  * @param {Function} sigmoid - The custom sigmoid function that converts an number into a value between 0 & 100.
  * @returns {Observable}
