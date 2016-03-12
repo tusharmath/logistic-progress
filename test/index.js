@@ -1,4 +1,5 @@
 import test from 'ava'
+const create = require('../index').create
 test(t => {
-  require('../index')
+  t.is(typeof create, 'function')
 })
