@@ -7,12 +7,11 @@ const Rx = require('rx')
  * @param {Function} getHead — function to get the Head values (0)
  * @param {Function} getBody — function to get the body values (sigmoid)
  * @param {Function} getTail — function to get the tail values (100, 0)
- * @param {Observable} source — the input stream representing the switch
  * @returns {Observable}
  */
-module.exports = (getHead, getBody, getTail, source) => {
-  const head = getHead(source)
-  const body = getBody(source)
-  const tail = getTail(source)
+module.exports = (getHead, getBody, getTail) => {
+  const head = getHead()
+  const body = getBody()
+  const tail = getTail()
   return Rx.Observable.merge(head, body, tail)
 }
