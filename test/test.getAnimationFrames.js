@@ -1,6 +1,6 @@
 import test from 'ava'
 import { TestScheduler } from 'rx'
-import getAnimationFrames from '../src/getAnimationFrames'
+import {getAnimationFrames} from '../index'
 
 const testSubscriber = x => {
   const out = []

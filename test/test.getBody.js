@@ -1,6 +1,6 @@
 import test from 'ava'
 import { TestScheduler, ReactiveTest } from 'rx'
-import getBody from '../src/getBody'
+import {getBody} from '../index'
 const {onNext} = ReactiveTest
 
 const testSubscriber = x => {
