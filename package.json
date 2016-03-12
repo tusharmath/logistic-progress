@@ -8,6 +8,10 @@
   },
   "author": "Tushar Mathur <tusharmath@gmail.com>",
   "license": "ISC",
+  "peerDependencies": {
+    "rx": "^4.1.0",
+    "rx-dom": "^7.0.3"
+  },
   "devDependencies": {
     "ava": "^0.13.0",
     "rx": "^4.1.0",
