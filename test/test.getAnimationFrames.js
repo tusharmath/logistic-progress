@@ -1,7 +1,6 @@
 import test from 'ava'
-import { TestScheduler, ReactiveTest } from 'rx'
+import { TestScheduler } from 'rx'
 import getAnimationFrames from '../src/getAnimationFrames'
-const {onNext} = ReactiveTest
 
 const testSubscriber = x => {
   const out = []
