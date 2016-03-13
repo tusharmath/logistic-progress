@@ -33,12 +33,13 @@ test('start', t => {
     onNext(210, true),
     onNext(220, false)
   )
-  const getAnimationFrames = () => sh.createHotObservable(
+  const animationFrames = sh.createHotObservable(
       onNext(205, 1),
       onNext(215, 2),
       onNext(225, 3)
   )
+  const getAnimationFrames = () => animationFrames
   const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 100))
   sh.start()
-  t.same(out, [303, 306])
+  t.same(out, [306])
 })
