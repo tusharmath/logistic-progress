@@ -1,5 +1,8 @@
 # Logistic Progressor
 
+[![Build Status](https://travis-ci.org/tusharmath/logistic-progressor.svg?branch=master)](https://travis-ci.org/tusharmath/logistic-progressor)
+[![npm](https://img.shields.io/npm/v/logistic-progressor.svg)](https://www.npmjs.com/package/logistic-progressor)
+
 A utility library to create an infinitely advancing progress bar.
 
 The library exposes a stream, which emits values starting from 0 and *logistically* increasing up until 100. The closer the value gets to 100, the smaller jumps it takes to get the next value, thus never actually reaching 100.
