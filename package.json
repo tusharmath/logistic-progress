@@ -1,10 +1,10 @@
 {
   "name": "logistic-progressor",
-  "version": "1.0.0",
   "description": "a loader based on standard logistic function",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "Tushar Mathur <tusharmath@gmail.com>",
   "license": "ISC",
@@ -16,7 +16,8 @@
     "ava": "^0.13.0",
     "cz-conventional-changelog": "^1.1.5",
     "rx": "^4.1.0",
-    "rx-dom": "^7.0.3"
+    "rx-dom": "^7.0.3",
+    "semantic-release": "^4.3.5"
   },
   "config": {
     "commitizen": {
@@ -25,5 +26,9 @@
   },
   "dependencies": {
     "funjector": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tusharmath/logistic-progressor.git"
   }
 }
