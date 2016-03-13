@@ -28,7 +28,7 @@ test(t => {
   const getAnimationFrames = () => animationFrames
   const out = testSubscriber(getTail(getAnimationFrames, source, body))
   sh.start()
-  t.same(out, [97, 98, 99, 100, 0])
+  t.same(out, [97, 98, 100, 0])
 })
 
 test('body has floating value', t => {
@@ -50,5 +50,5 @@ test('body has floating value', t => {
   const getAnimationFrames = () => animationFrames
   const out = testSubscriber(getTail(getAnimationFrames, source, body))
   sh.start()
-  t.same(out, [97, 98, 99, 100, 0])
+  t.same(out, [97, 98, 100, 0])
 })

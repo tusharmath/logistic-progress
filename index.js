@@ -32,11 +32,19 @@ e.getHead = () => Rx.Observable.just(0)
 e.getTail = partialize((getAnimationFrames, source, body) => e
     .getStop(source)
     .withLatestFrom(body.map(Math.floor), (a, b) => b)
-    .flatMap(i => getAnimationFrames()
-        .map(x => (x + i + 1))
-        .takeWhile(x => x <= 101)
-        .map(x => x === 101 ? 0 : x))
+    .flatMap(i => {
+      const valueList = [0, 100]
+      const lastTwoValues = () => getAnimationFrames()
+          .take(2)
+          .map(() => valueList.pop())
 
+      const tail = getAnimationFrames()
+        .map(x => (x * x + i + 1))
+        .map(x => Math.min(x, 100))
+        .takeWhile(x => x < 100)
+
+      return Rx.Observable.merge(tail, tail.last().flatMap(lastTwoValues))
+    })
   , e.getAnimationFrames)
 
 e.merge = partialize((getHead, getBody, getTail, source, options) => {
