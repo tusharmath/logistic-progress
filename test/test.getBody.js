@@ -1,6 +1,6 @@
 import test from 'ava'
 import { TestScheduler, ReactiveTest } from 'rx'
-import {getBody} from '../index'
+import { getBody } from '../index'
 const {onNext} = ReactiveTest
 
 const testSubscriber = x => {
@@ -21,7 +21,7 @@ test(t => {
       onNext(215, 2),
       onNext(225, 3)
   )
-  const out = testSubscriber(getBody(source, sigmoid, getAnimationFrames))
+  const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3))
   sh.start()
-  t.same(out, [10, 20])
+  t.same(out, [30, 60])
 })
