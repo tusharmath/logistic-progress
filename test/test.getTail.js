@@ -30,3 +30,25 @@ test(t => {
   sh.start()
   t.same(out, [97, 98, 99, 100, 0])
 })
+
+test('body has floating value', t => {
+  const sh = new TestScheduler()
+  const source = sh.createHotObservable(
+    onNext(210, false)
+  )
+  const body = sh.createHotObservable(
+    onNext(205, 96.3)
+  )
+  const animationFrames = sh.createHotObservable(
+    onNext(220, 0),
+    onNext(230, 1),
+    onNext(240, 2),
+    onNext(250, 3),
+    onNext(260, 4),
+    onNext(270, 5)
+  )
+  const getAnimationFrames = () => animationFrames
+  const out = testSubscriber(getTail(getAnimationFrames, source, body))
+  sh.start()
+  t.same(out, [97, 98, 99, 100, 0])
+})

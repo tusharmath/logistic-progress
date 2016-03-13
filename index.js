@@ -31,7 +31,7 @@ e.getHead = () => Rx.Observable.just(0)
 
 e.getTail = partialize((getAnimationFrames, source, body) => e
     .getStop(source)
-    .withLatestFrom(body, (a, b) => b)
+    .withLatestFrom(body.map(Math.floor), (a, b) => b)
     .flatMap(i => getAnimationFrames()
         .map(x => (x + i + 1))
         .takeWhile(x => x <= 101)
