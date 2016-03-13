@@ -38,4 +38,4 @@ e.merge = partialize((getHead, getBody, getTail, source, rate) => {
   return Rx.Observable.merge(head, body, tail)
 }, e.getHead, e.getBody, e.getTail)
 
-exports.create = (source, rate) => injector.call(e.merge, source, rate > 0 ? rate : 1)
+exports.create = (source, rate) => injector.call(e.merge, source, rate > 0 ? rate : Math.E).distinctUntilChanged()
