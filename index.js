@@ -29,15 +29,20 @@ e.getBody = partialize((sigmoid, getAnimationFrames, source, rate, initialValue)
 
 e.getHead = () => Rx.Observable.just(0)
 
-e.getTail = partialize((scheduler, source, timeout) => e
+e.getTail = partialize((getAnimationFrames, source, body) => e
     .getStop(source)
-    .flatMap(() => Rx.Observable.from([100, 0], (x) => x, null, scheduler))
-  , RequestAnimationFrame)
+    .withLatestFrom(body, (a, b) => b)
+    .flatMap(i => getAnimationFrames()
+        .map(x => (x + i + 1))
+        .takeWhile(x => x <= 101)
+        .map(x => x === 101 ? 0 : x))
+
+  , e.getAnimationFrames)
 
 e.merge = partialize((getHead, getBody, getTail, source, options) => {
   const head = getHead()
   const body = getBody(source, options.rate, options.start)
-  const tail = getTail(source)
+  const tail = getTail(source, body)
   return Rx.Observable.merge(head, body, tail)
 }
   , e.getHead, e.getBody, e.getTail)
