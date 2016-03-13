@@ -34,12 +34,34 @@ test('start', t => {
     onNext(220, false)
   )
   const animationFrames = sh.createHotObservable(
-      onNext(205, 1),
-      onNext(215, 2),
-      onNext(225, 3)
+    onNext(205, 1),
+    onNext(215, 2),
+    onNext(225, 3)
   )
   const getAnimationFrames = () => animationFrames
   const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 100))
   sh.start()
   t.same(out, [306])
+})
+
+test('start:multiple', t => {
+  const sh = new TestScheduler()
+  const sigmoid = (x, i) => x * i
+  const source = sh.createHotObservable(
+    onNext(210, true),
+    onNext(220, false),
+    onNext(230, true),
+    onNext(240, false)
+  )
+  const animationFrames = sh.createHotObservable(
+    onNext(205, 1),
+    onNext(215, 2),
+    onNext(225, 3),
+    onNext(235, 4),
+    onNext(245, 5)
+  )
+  const getAnimationFrames = () => animationFrames
+  const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 100))
+  sh.start()
+  t.same(out, [306, 312])
 })
