@@ -21,7 +21,24 @@ test(t => {
       onNext(215, 2),
       onNext(225, 3)
   )
-  const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3))
+  const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 0))
   sh.start()
   t.same(out, [30, 60])
+})
+
+test('start', t => {
+  const sh = new TestScheduler()
+  const sigmoid = (x, i) => x * i
+  const source = sh.createHotObservable(
+    onNext(210, true),
+    onNext(220, false)
+  )
+  const getAnimationFrames = () => sh.createHotObservable(
+      onNext(205, 1),
+      onNext(215, 2),
+      onNext(225, 3)
+  )
+  const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 100))
+  sh.start()
+  t.same(out, [303, 306])
 })
