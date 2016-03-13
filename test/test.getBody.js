@@ -11,7 +11,7 @@ const testSubscriber = x => {
 
 test(t => {
   const sh = new TestScheduler()
-  const sigmoid = x => x * 10
+  const sigmoid = (x, i) => x * i * 10
   const source = sh.createHotObservable(
     onNext(210, true),
     onNext(220, false)

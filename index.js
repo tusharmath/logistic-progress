@@ -5,7 +5,7 @@ const injector = require('funjector')
 const partialize = injector.partialize
 const RequestAnimationFrame = RxDOM.Scheduler.requestAnimationFrame
 
-e.sigmoid = (x) => (2 / (1 + Math.pow(2, -x)) - 1) * 100
+e.sigmoid = (x, rate) => (2 / (1 + Math.pow(rate, -x)) - 1) * 100
 
 e.getStart = (source) => source.filter(x => Boolean(x))
 
@@ -22,8 +22,7 @@ e.getBody = partialize((sigmoid, getAnimationFrames, source, rate) => {
   return start
     .flatMap(() => getAnimationFrames())
     .takeUntil(stop)
-    .map(x => x * rate)
-    .map(x => sigmoid(x))
+    .map(x => sigmoid(x, rate))
 }, e.sigmoid, e.getAnimationFrames)
 
 e.getHead = () => Rx.Observable.just(0)
