@@ -27,7 +27,8 @@ e.getBody = partialize((sigmoid, getAnimationFrames, source, rate, initialValue)
   const stop = e.getStop(source)
   return start
     .flatMap(() => getAnimationFrames().takeUntil(stop))
-    .map(x => sigmoid(x + initialValue, rate))
+    .map(x => sigmoid(x, rate))
+    .map(x => x + initialValue)
 }
   , e.sigmoid, e.getAnimationFrames)
 

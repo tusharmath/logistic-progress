@@ -41,7 +41,7 @@ test('start', t => {
   const getAnimationFrames = () => animationFrames
   const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 100))
   sh.start()
-  t.same(out, [306])
+  t.same(out, [106])
 })
 
 test('start:multiple', t => {
@@ -63,5 +63,5 @@ test('start:multiple', t => {
   const getAnimationFrames = () => animationFrames
   const out = testSubscriber(getBody(sigmoid, getAnimationFrames, source, 3, 100))
   sh.start()
-  t.same(out, [306, 312])
+  t.same(out, [106, 112])
 })
