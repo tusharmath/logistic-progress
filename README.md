@@ -5,7 +5,11 @@
 
 A utility library to create an infinitely advancing progress bar.
 
+[demo-gif]: http://res.cloudinary.com/tusharmath/image/upload/v1457934350/Logistic-Loader-Demo_iu9cnh.gif
+![Demo][demo-gif]
+
 The library exposes a stream, which emits values starting from 0 and *logistically* increasing up until 100. The closer the value gets to 100, the smaller jumps it takes to get the next value, thus never actually reaching 100.
+
 
 
 # Install
