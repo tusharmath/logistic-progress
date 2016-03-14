@@ -5,7 +5,11 @@ const injector = require('funjector')
 const partialize = injector.partialize
 const RequestAnimationFrame = RxDOM.Scheduler.requestAnimationFrame
 
-const DEFAULTS = {rate: Math.E, start: 0}
+const DEFAULTS = {
+  startRate: Math.E,
+  startAt: 0,
+  endRate: 2
+}
 
 e.sigmoid = (x, rate) => (2 / (1 + Math.pow(rate, -x)) - 1) * 100
 
@@ -29,9 +33,9 @@ e.getBody = partialize((sigmoid, getAnimationFrames, source, rate, initialValue)
 
 e.getHead = () => Rx.Observable.just(0)
 
-e.getTail = partialize((getAnimationFrames, source, body) => e
+e.getTail = partialize((getAnimationFrames, source, body, endRate) => e
     .getStop(source)
-    .withLatestFrom(body.map(Math.floor), (a, b) => b)
+    .withLatestFrom(body, (a, b) => b)
     .flatMap(i => {
       const valueList = [0, 100]
       const lastTwoValues = () => getAnimationFrames()
@@ -39,7 +43,8 @@ e.getTail = partialize((getAnimationFrames, source, body) => e
           .map(() => valueList.pop())
 
       const tail = getAnimationFrames()
-        .map(x => (x * x + i + 1))
+        .map(x => Math.pow(x, endRate))
+        .map(x => x + i + 1)
         .map(x => Math.min(x, 100))
         .takeWhile(x => x < 100)
 
@@ -49,8 +54,8 @@ e.getTail = partialize((getAnimationFrames, source, body) => e
 
 e.merge = partialize((getHead, getBody, getTail, source, options) => {
   const head = getHead()
-  const body = getBody(source, options.rate, options.start)
-  const tail = getTail(source, body)
+  const body = getBody(source, options.startRate, options.startAt)
+  const tail = getTail(source, body, options.endRate)
   return Rx.Observable.merge(head, body, tail)
 }
   , e.getHead, e.getBody, e.getTail)
