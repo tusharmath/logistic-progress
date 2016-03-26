@@ -1,7 +1,8 @@
 import * as Rx from 'rx'
 import test from 'ava'
+import { orig } from 'funjector'
 
-const create = require('../index').create
+const create = orig(require('../index').create)
 test(t => {
   t.is(typeof create, 'function')
 })
