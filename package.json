@@ -25,7 +25,7 @@
     }
   },
   "dependencies": {
-    "funjector": "^2.0.0"
+    "funjector": "^3.0.0"
   },
   "repository": {
     "type": "git",
