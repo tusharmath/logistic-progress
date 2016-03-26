@@ -2,7 +2,7 @@ const e = exports
 const RxDOM = require('rx-dom')
 const Rx = require('rx')
 const injector = require('funjector')
-const partialize = injector.partialize
+const partialize = injector.partial
 const RequestAnimationFrame = RxDOM.Scheduler.requestAnimationFrame
 
 const DEFAULTS = {
@@ -61,6 +61,6 @@ e.merge = partialize((getHead, getBody, getTail, source, options) => {
 }
   , e.getHead, e.getBody, e.getTail)
 
-exports.create = (source, options) => injector
-    .call(e.merge, source, Object.assign({}, DEFAULTS, options))
+exports.create = (source, options) => e
+    .merge(source, Object.assign({}, DEFAULTS, options))
     .distinctUntilChanged()
