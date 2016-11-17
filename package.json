@@ -17,7 +17,7 @@
     "cz-conventional-changelog": "^1.1.5",
     "rx": "^4.1.0",
     "rx-dom": "^7.0.3",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^6.3.2"
   },
   "config": {
     "commitizen": {
