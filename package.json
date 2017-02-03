@@ -13,7 +13,7 @@
     "rx-dom": "^7.0.3"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.18.1",
     "cz-conventional-changelog": "^1.1.5",
     "rx": "^4.1.0",
     "rx-dom": "^7.0.3",
