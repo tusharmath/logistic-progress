@@ -44,7 +44,7 @@ e.getTail = partialize((getAnimationFrames, source, body, endRate) => e
           .map(() => valueList.pop())
 
       const tail = getAnimationFrames()
-        .map(x => Math.pow(x, endRate))
+        .map(x => Math.pow(x, 'endRate'))
         .map(x => x + i + 1)
         .map(x => Math.min(x, 100))
         .takeWhile(x => x < 100)
