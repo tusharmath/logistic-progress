@@ -1,5 +1,7 @@
 # Logistic Progressor
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tusharmath/logistic-progressor.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/tusharmath/logistic-progressor.svg?branch=master)](https://travis-ci.org/tusharmath/logistic-progressor)
 [![npm](https://img.shields.io/npm/v/logistic-progressor.svg)](https://www.npmjs.com/package/logistic-progressor)
 

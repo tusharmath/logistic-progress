@@ -13,11 +13,11 @@
     "rx-dom": "^7.0.3"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "cz-conventional-changelog": "^1.1.5",
+    "ava": "^0.19.1",
+    "cz-conventional-changelog": "^2.0.0",
     "rx": "^4.1.0",
     "rx-dom": "^7.0.3",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^6.3.6"
   },
   "config": {
     "commitizen": {
